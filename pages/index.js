@@ -67,3 +67,11 @@ export default function Home() {
     </div>
   )
 }
+
+export async function getServerSideProps(context) {
+  const res = await fetch(`http://localhost:3000/api/hello`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
+}
