@@ -47,7 +47,7 @@ export default function Home({ data }) {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`${process.env.BASE_URL}/api/elastic`)
+  const res = await fetch(`${process.env.BASE_URL}/api/coffee`)
   const data = await res.json()
 
   // Pass data to the page via props
