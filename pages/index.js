@@ -15,12 +15,12 @@ const ApexCharts = dynamic(() => import('react-apexcharts'), { ssr: false });
  * @returns 
  */
 export default function Home({ data }) {
-  console.log(data) // TODO: Remove!
   const countries = []
   const body_avg = []
   const acidity_avg = []
   const aftertaste_avg = []
   const cupperPoints_avg = []
+
   data.data.forEach(element => {
     countries.push(element.key)
     body_avg.push(element.body_avg.value.toFixed(2))
@@ -29,8 +29,7 @@ export default function Home({ data }) {
     cupperPoints_avg.push(element.cupperPoints_avg.value.toFixed(2))
   });
 
-  console.log(countries)
-  console.log(body_avg)
+  // Set base options with countries for diagram.
   const [options, setOptions] = useState({
     chart: {
       id: 'coffee-taste',
@@ -46,6 +45,7 @@ export default function Home({ data }) {
     }
   })
 
+  // Set first diagram to cupper points to be displayed.
   const [selection, setSelection] = useState({
     series : [{
       name: 'cupper_points',
@@ -53,6 +53,17 @@ export default function Home({ data }) {
     }
   ]})
 
+  // Change diagram to show body data.
+  const showCupperPoints = () => {
+    setSelection({
+      series : [{
+        name: 'cupper_points',
+        data: cupperPoints_avg
+      }
+    ]})
+  }
+
+  // Change diagram to show body data.
   const showBody = () => {
     setSelection({
       series : [{
@@ -62,6 +73,7 @@ export default function Home({ data }) {
     ]})
   }
 
+  // Change diagram to show acidity data.
   const showAcidity = () => {
     setSelection({
       series : [{
@@ -71,6 +83,7 @@ export default function Home({ data }) {
     ]})
   }
 
+  // Change diagram to show aftertaste data.
   const showAftertaste = () => {
     setSelection({
       series : [{
@@ -92,7 +105,7 @@ export default function Home({ data }) {
         <h1 className={styles.title}>Coffee Tastes</h1>
 
         <div className={styles.grid}>
-
+          <button className={styles.card} onClick={showCupperPoints}>Cupper Points</button>
           <button className={styles.card} onClick={showBody}>Body</button>
           <button className={styles.card} onClick={showAcidity}>Acidity</button>
           <button className={styles.card} onClick={showAftertaste}>Aftertaste</button>
