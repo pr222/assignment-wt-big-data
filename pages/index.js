@@ -69,7 +69,7 @@ export default function Home() {
 }
 
 export async function getServerSideProps(context) {
-  const res = await fetch(`http://localhost:3000/api/hello`)
+  const res = await fetch(`${process.env.BASE_URL}/api/elastic`)
   const data = await res.json()
 
   // Pass data to the page via props
