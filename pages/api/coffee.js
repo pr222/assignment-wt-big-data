@@ -1,4 +1,4 @@
-import { Client } from '@elastic/Elasticsearch'
+const { Client } = require('@elastic/elasticsearch')
 /**
  * Connect to the Elastic Search Client.
  * 
