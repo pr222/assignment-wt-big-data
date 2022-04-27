@@ -1,4 +1,5 @@
 const { Client } = require('@elastic/elasticsearch')
+
 /**
  * Connect to the Elastic Search Client.
  * 

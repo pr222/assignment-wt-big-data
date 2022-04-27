@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useState } from 'react'
 import CoffeeDiagram from './../components/coffee_diagram'
 import styles from '../styles/Home.module.css'
 
@@ -20,7 +19,9 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Coffee Tastes</h1>
+
         <CoffeeDiagram data={data} />
+        
       </main>
 
       <footer className={styles.footer}>
@@ -48,7 +49,12 @@ export default function Home({ data }) {
   )
 }
 
-export async function getServerSideProps(context) {
+/**
+ * Pre-fetch coffee data on the serverside before clientside rendering.
+ * 
+ * @returns coffee-related data.
+ */
+export async function getServerSideProps() {
   const res = await fetch(`${process.env.BASE_URL}/api/coffee`)
   const data = await res.json()
 
