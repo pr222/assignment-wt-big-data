@@ -19,9 +19,21 @@ export default function Home({ data }) {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Coffee Tastes</h1>
-
-        <CoffeeDiagram data={data} />
+        <p>How coffee tastes, grown from different parts of the world.</p>
+        <p>
+          Now also {' '}       
+          <a
+            href="https://en.wikipedia.org/wiki/Coffee_cupping"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            cupped
+          </a>
+          {' '} by the Coffee Quality Institute!
+        </p>
         
+        <CoffeeDiagram data={data} />
+
       </main>
 
       <footer className={styles.footer}>
